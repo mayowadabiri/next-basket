@@ -40,7 +40,7 @@ const Header = () => {
             <nav>
               <List sx={{ display: 'flex' }}>
                 {navs.map((each) => (
-                  <Navigation {...each} />
+                  <Navigation {...each} key={each.primary} />
                 ))}
               </List>
             </nav>

@@ -78,8 +78,8 @@ const Comments = () => {
           </Box>
           <Box>
             <ImageList cols={3} rowHeight={146} gap={20}>
-              {images.map((each) => (
-                <ImageListItem>
+              {images.map((each, index) => (
+                <ImageListItem key={index}>
                   <Image
                     src={each}
                     alt="Image"

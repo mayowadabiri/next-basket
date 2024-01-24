@@ -16,7 +16,7 @@ const Container = ({ children, sx, withPadding = false }: IContainer) => {
       defaultStyle['padding'] = '80px 0';
     }
     return defaultStyle;
-  }, []);
+  }, [withPadding]);
 
   return <Box sx={{ ...style, ...sx }}>{children}</Box>;
 };

@@ -30,7 +30,12 @@ const Cart = () => {
       <Box sx={style}>
         <Stack spacing={3}>
           {carts.map((each) => (
-            <Stack direction="row" spacing={4} alignItems="center">
+            <Stack
+              direction="row"
+              spacing={4}
+              alignItems="center"
+              key={each.id}
+            >
               <Box
                 sx={{
                   height: '100px',

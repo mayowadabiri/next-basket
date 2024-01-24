@@ -30,12 +30,12 @@ export const useRenderProducts = (limit: number) => {
     if (data) {
       return limit === data.total;
     }
-  }, [data]);
+  }, [data]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const renderProducts = () => (
     <Grid container sx={{ p: 5 }} spacing={6}>
       {products.map((product) => (
-        <Grid item xs={3}>
+        <Grid item xs={3} key={product.id}>
           <Link href={`/${product.id}`} style={{ textDecoration: 'none' }}>
             <ProductCard {...product} />
           </Link>

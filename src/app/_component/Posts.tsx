@@ -43,8 +43,8 @@ const Posts = () => {
           }}
         >
           <Stack direction="row" spacing={2} justifyContent={'center'}>
-            {images.map((each) => (
-              <Card sx={{ position: 'relative' }}>
+            {images.map((each, index) => (
+              <Card sx={{ position: 'relative' }} key={index}>
                 <Image src={each} alt="Posts" style={{ width: '100%' }} />
                 <CardContent sx={{ p: 5 }}>
                   <Stack direction="row" spacing={3} alignItems="center" mb={2}>
@@ -74,10 +74,12 @@ const Posts = () => {
                     variant="h6"
                     color={theme.palette.text.primary}
                   >
-                    Loudest à la Madison #1 (L'integral)
+                    {/* eslint-disable-next-line react/no-unescaped-entities */}
+                    Loudest à la Madison #1 (L'integral){' '}
                   </Typography>
                   <Typography color={theme.palette.text.secondary} mb={2}>
-                    We focus on ergonomics and meeting you where you work. It's
+                    {/* eslint-disable-next-line react/no-unescaped-entities */}
+                    We focus on ergonomics and meeting you where you work. It's{' '}
                     only a keystroke away.
                   </Typography>
                   <Stack

@@ -9,7 +9,7 @@ import {
   useEffect,
 } from 'react';
 
-type UpdateType = 'increament' | 'decrement';
+type UpdateType = 'increment' | 'decrement';
 interface IAppContext {
   carts: IProduct[];
   wishlist: IProduct[];
@@ -19,6 +19,7 @@ interface IAppContext {
   removeCartItem: (id: number) => void;
   removeWishist: (id: number) => void;
   setOpenCart: () => void;
+  openCart: boolean;
 }
 
 export const AppContext = createContext<IAppContext>(null!);
@@ -108,7 +109,7 @@ export const AppProvider: FC<IContextProvider> = ({ children }) => {
       setOpenCart: () => setOpenCart(!openCart),
       openCart,
     }),
-    [carts, wishlist, openCart]
+    [carts, wishlist, openCart] //eslint-disable-line react-hooks/exhaustive-deps
   );
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

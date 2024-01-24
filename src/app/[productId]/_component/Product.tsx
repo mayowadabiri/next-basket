@@ -55,10 +55,10 @@ const Product = () => {
               >
                 <SplideTrack>
                   {data?.images.map((each) => (
-                    <SplideSlide>
-                      <img
+                    <SplideSlide key={each}>
+                      <img //eslint-disable-line @next/next/no-img-element
                         src={each}
-                        alt="Image 1"
+                        alt="each"
                         style={{ height: '100%' }}
                       />
                     </SplideSlide>
@@ -109,6 +109,7 @@ const Product = () => {
               <Stack pt={6} direction="row" spacing={2}>
                 {colors.map((each) => (
                   <Box
+                    key={each}
                     sx={{
                       width: '40px',
                       height: '40px',
@@ -184,6 +185,7 @@ const Product = () => {
           <Stack direction="row" pt="21px" spacing={4}>
             {data?.images.map((each) => (
               <Box
+                key={each}
                 sx={{ width: '100px', height: '75px', position: 'relative' }}
               >
                 <Image

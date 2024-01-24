@@ -50,14 +50,15 @@ const Footer = () => {
       </Box>
       <Container>
         <Stack sx={{ py: 13 }} direction="row" justifyContent="space-between">
-          {footerNavs.map((each) => (
-            <Stack spacing={5}>
+          {footerNavs.map((each, index) => (
+            <Stack spacing={5} key={index}>
               <Text variant="body1" isBold>
                 {each.title}
               </Text>
               <Stack spacing={3}>
-                {each.links.map((item) => (
+                {each.links.map((item, index) => (
                   <Link
+                    key={index}
                     sx={{
                       color: '#737373',
                       fontWeight: 700,
