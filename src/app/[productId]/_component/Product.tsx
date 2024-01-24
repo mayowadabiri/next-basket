@@ -34,7 +34,6 @@ const Product = () => {
   const theme = useTheme();
   const { addToCart, addToWishlist, carts, wishlist, openCart } =
     useContext(AppContext);
-    console.log(openCart)
   const isCartDisabled = carts.find((each) => each.id === data?.id);
   const isWishlistDisabled = wishlist.find((each) => each.id === data?.id);
   return (

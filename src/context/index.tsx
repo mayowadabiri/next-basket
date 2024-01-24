@@ -59,17 +59,14 @@ export const AppProvider: FC<IContextProvider> = ({ children }) => {
   };
 
   const updateCartItem = (type: UpdateType, id: number) => {
-    console.log("Got here")
     const selectedProduct = carts.find((item) => item.id === id);
     if (type === 'increment') {
-      console.log(selectedProduct)
       selectedProduct!.quantity = selectedProduct!.quantity + 1;
       const updatedCart = carts.map((each) => {
         if (each.id === id) return selectedProduct!;
         return each;
       });
 
-      console.log(updatedCart);
       saveToLocalStorage('carts', updatedCart);
       setCart(updatedCart);
     } else {
@@ -111,7 +108,7 @@ export const AppProvider: FC<IContextProvider> = ({ children }) => {
       setOpenCart: () => setOpenCart(!openCart),
       openCart,
     }),
-    [carts, wishlist,openCart]
+    [carts, wishlist, openCart]
   );
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
