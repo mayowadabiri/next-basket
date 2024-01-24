@@ -27,7 +27,7 @@ const Header = () => {
         <Stack direction={'row'} alignItems={'center'}>
           <Box marginRight={'119px'}>
             <Link
-              href="#"
+              href="/"
               fontWeight={700}
               color={theme.palette.text.primary}
               variant="h4"
