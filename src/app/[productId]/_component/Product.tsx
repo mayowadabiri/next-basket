@@ -32,7 +32,9 @@ const Product = () => {
     id: Number(params.productId!),
   });
   const theme = useTheme();
-  const { addToCart, addToWishlist, carts, wishlist } = useContext(AppContext);
+  const { addToCart, addToWishlist, carts, wishlist, openCart } =
+    useContext(AppContext);
+    console.log(openCart)
   const isCartDisabled = carts.find((each) => each.id === data?.id);
   const isWishlistDisabled = wishlist.find((each) => each.id === data?.id);
   return (
@@ -207,7 +209,7 @@ const Product = () => {
           />
         </Box>
       )}
-      <Cart />
+      {openCart && <Cart />}
     </Box>
   );
 };

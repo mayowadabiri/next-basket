@@ -19,7 +19,7 @@ import { useContext } from 'react';
 const Header = () => {
   const isSingleProduct = useIsSingleProductPage();
   const theme = useTheme();
-  const { wishlist, carts } = useContext(AppContext);
+  const { wishlist, carts, setOpenCart } = useContext(AppContext);
 
   return (
     <Box component={'header'} sx={{ padding: '16px 34px' }}>
@@ -66,7 +66,7 @@ const Header = () => {
               <IconButton sx={{ p: 3 }}>
                 <Icon name={Icons.Search} height={20} width={20} />
               </IconButton>
-              <IconButton sx={{ p: 3 }}>
+              <IconButton sx={{ p: 3 }} onClick={setOpenCart}>
                 <Icon name={Icons.Cart} height={20} width={20} />
                 {carts.length > 0 && (
                   <Typography color="#23A6F0">{carts.length}</Typography>

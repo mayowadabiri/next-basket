@@ -1,5 +1,5 @@
 import {Button as MUIButton} from '@mui/material';
-const Button = ({children, onClick}:{children: React.ReactNode, onClick=() => void}) =>{
+const Button = ({children, onClick}:{children: React.ReactNode; onClick:() => void}) =>{
     return(
            <MUIButton
         onClick={onClick}

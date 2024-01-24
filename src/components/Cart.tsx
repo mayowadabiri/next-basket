@@ -18,48 +18,61 @@ const style = {
 };
 
 const Cart = () =>{
-  const { updateCartItem, carts, wishlist } = useContext(AppContext);
+  const { updateCartItem, carts, wishlist , openCart,setOpenCart} = useContext(AppContext);
     console.log(carts)
     return (
-<Modal
-  open={true}
-  onClose={() => {}}
-  aria-labelledby="modal-modal-title"
-  aria-describedby="modal-modal-description"
->
-  <Box sx={style}>
-
-    <Stack spacing={3}>
-{carts.map(each => (
-
-    <Stack direction="row" spacing={4} alignItems="center">
-        <Box sx={{height:"100px", width:"100px", position:"relative", borderRadius:"50%"}}>
-            <Image src={each.thumbnail} alt="image" fill style={{borderRadius:"50%"}}/>
-        </Box>
-        <Box>
-            <Typography color="#252B42" variant="h4">{each.title}</Typography>
-            <Typography color="#252B42" variant="h6">${each.price}</Typography>
-            <Typography>Quantity: {each.quantity} </Typography>
-            <Stack direction="row" spacing ={2}>
-                   <Button
-                   onCick={() => updateCartItem("increment", each.id)}
-        >
-          Increment
-        </Button>
+      <Modal
+        open={openCart}
+        onClose={setOpenCart}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Stack spacing={3}>
+            {carts.map((each) => (
+              <Stack direction="row" spacing={4} alignItems="center">
+                <Box
+                  sx={{
+                    height: '100px',
+                    width: '100px',
+                    position: 'relative',
+                    borderRadius: '50%',
+                  }}
+                >
+                  <Image
+                    src={each.thumbnail}
+                    alt="image"
+                    fill
+                    style={{ borderRadius: '50%' }}
+                  />
+                </Box>
+                <Box>
+                  <Typography color="#252B42" variant="h4">
+                    {each.title}
+                  </Typography>
+                  <Typography color="#252B42" variant="h6">
+                    ${each.price}
+                  </Typography>
+                  <Typography>Quantity: {each.quantity} </Typography>
+                  <Stack direction="row" spacing={2}>
                     <Button
-                                       onCick={() => updateCartItem("decrement",each.id)}
-
-        >
-          Decrement
-        </Button>
-        </Stack>
-        </Box>
-        </Stack>
+                      onClick={() => updateCartItem('increment', each.id)}
+                    >
+                      Increment
+                    </Button>
+                 {each.quantity > 0 &&   <Button
+                      onClick={() => updateCartItem('decrement', each.id)}
+                    >
+                      Decrement
+                    </Button>}
+                  </Stack>
+                </Box>
+              </Stack>
             ))}
-    </Stack>
-  </Box>
-</Modal>
-    )
+          </Stack>
+        </Box>
+      </Modal>
+    );
 }
 
 

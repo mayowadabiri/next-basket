@@ -18,6 +18,7 @@ interface IAppContext {
   updateCartItem: (type: UpdateType, id: number) => void;
   removeCartItem: (id: number) => void;
   removeWishist: (id: number) => void;
+  setOpenCart: () => void;
 }
 
 export const AppContext = createContext<IAppContext>(null!);
@@ -29,6 +30,7 @@ interface IContextProvider {
 export const AppProvider: FC<IContextProvider> = ({ children }) => {
   const [carts, setCart] = useState<IProduct[]>([]);
   const [wishlist, setWishlist] = useState<IProduct[]>([]);
+  const [openCart, setOpenCart] = useState(false);
 
   useEffect(() => {
     const carts = window.localStorage.getItem('carts');
@@ -57,15 +59,18 @@ export const AppProvider: FC<IContextProvider> = ({ children }) => {
   };
 
   const updateCartItem = (type: UpdateType, id: number) => {
+    console.log("Got here")
     const selectedProduct = carts.find((item) => item.id === id);
-    if (type === 'increament') {
+    if (type === 'increment') {
+      console.log(selectedProduct)
       selectedProduct!.quantity = selectedProduct!.quantity + 1;
       const updatedCart = carts.map((each) => {
         if (each.id === id) return selectedProduct!;
         return each;
       });
-      saveToLocalStorage('carts', updatedCart);
 
+      console.log(updatedCart);
+      saveToLocalStorage('carts', updatedCart);
       setCart(updatedCart);
     } else {
       if (selectedProduct?.quantity !== 1) {
@@ -103,8 +108,10 @@ export const AppProvider: FC<IContextProvider> = ({ children }) => {
       updateCartItem,
       removeWishist,
       removeCartItem,
+      setOpenCart: () => setOpenCart(!openCart),
+      openCart,
     }),
-    [carts, wishlist]
+    [carts, wishlist,openCart]
   );
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
